@@ -34,27 +34,59 @@ public static void main(String[] args) {
     for (int i = 1; i <= sides; i++)
 	    for (int j = 1; j <= sides; j++)
 		    dist[i + j] += 1.0;
-		for (int k = 2; k <= sides * 2; k++) {
-	    dist[k] /= 36.0;
-	    System.out.println(dist[k]);
+    for (int k = 2; k <= sides * 2; k++) {
+      dist[k] /= 36.0;
+      System.out.println(dist[k]);
     }
-	  System.out.println();
+    System.out.println();
     System.out.println("Simulated:");
     int rolls = 0;
     double[] simDist = new double[13];
     double[] simProbability = new double[13];
-	  while (!withinLimit(dist, simProbability)) {
-	  int result = rollDice();
-	  rolls++;
-	  simDist[result] += 1.0;
-		for (int i = 2; i < simDist.length; i++) {
-		  simProbability[i] = simDist[i] / rolls;
-	  }
-  }
-  for(int i = 2; i < simProbability.length;i++){
-	  System.out.println(simProbability[i]);
-  }
-  System.out.println();
-  System.out.println("It took " + rolls + " rolls to get desired result");
+    while (!withinLimit(dist, simProbability)) {
+     int result = rollDice();
+     rolls++;
+     simDist[result] += 1.0;
+     for (int i = 2; i < simDist.length; i++) {
+	  simProbability[i] = simDist[i] / rolls;
+     }
+     }
+     for(int i = 2; i < simProbability.length;i++){
+       System.out.println(simProbability[i]);
+     }
+     System.out.println();
+     System.out.println("It took " + rolls + " rolls to get desired result");
 }
 ```
+####Testing Output
+```javascript
+Exact: 
+0.027777777777777776
+0.05555555555555555
+0.08333333333333333
+0.1111111111111111
+0.1388888888888889
+0.16666666666666666
+0.1388888888888889
+0.1111111111111111
+0.08333333333333333
+0.05555555555555555
+0.027777777777777776
+
+Simulated:
+0.02771339438966636
+0.05599057844820026
+0.08298983925730108
+0.11066564766904294
+0.13928110552889736
+0.16757081824673942
+0.13789042434569077
+0.11018955861533257
+0.08418006189157698
+0.05548943207587356
+0.028039139531678716
+
+It took 79817 rolls to get desired result
+
+```
+The number of rolls changes every time you run the program. 
