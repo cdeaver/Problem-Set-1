@@ -15,6 +15,6 @@ This assignment was easy to understand the concepts, but the implementation prov
 Creating a simulation experiment of two die being rolled.  The goal is to find the number of rolls required to make the percentages (chances) of rolling a number between 2 and 12 the same as the exact chances given by the book. 
 
 ####Full Source Code
-
+[code](https://github.com/cdeaver/Problem-Set-1/blob/master/source%20code)
 
 
