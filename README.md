@@ -1,11 +1,11 @@
-Tradd Deaver
-January 19 2016
-CSCI 223 Problem Set 1
+####Tradd Deaver
+####January 19 2016
+####CSCI 223 Problem Set 1
 
-Collaborators: 
+####Collaborators: 
 1. James Andrus
 
-Resources:
+####Resources:
 1. TextBook
 
 
