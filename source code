@@ -1,0 +1,64 @@
+```javascript
+//Tradd Deaver
+
+public class Dice_sim {
+	// percentage array
+
+	public static void main(String[] args) {
+		System.out.println("Exact: ");
+		int sides = 6;
+		double[] dist = new double[2 * sides + 1];
+		for (int i = 1; i <= sides; i++)
+			for (int j = 1; j <= sides; j++)
+				dist[i + j] += 1.0;
+
+		for (int k = 2; k <= sides * 2; k++) {
+			dist[k] /= 36.0;
+			System.out.println(dist[k]);
+		}
+
+		System.out.println();
+		System.out.println("Simulated:");
+		int rolls = 0;
+		double[] simDist = new double[13];
+		double[] simProbability = new double[13];
+
+		while (!withinLimit(dist, simProbability)) {
+			int result = rollDice();
+			rolls++;
+			simDist[result] += 1.0;
+
+			for (int i = 2; i < simDist.length; i++) {
+				simProbability[i] = simDist[i] / rolls;
+			}
+		}
+		for(int i = 2; i < simProbability.length;i++){
+			System.out.println(simProbability[i]);
+		}
+		System.out.println();
+		System.out.println("It took " + rolls + " rolls to get desired result");
+	}
+
+	public static int rollDice() {
+		int d1 = (int) (Math.random() * 6) + 1;
+		int d2 = (int) (Math.random() * 6) + 1;
+
+		return d1 + d2;
+
+	}
+
+	public static boolean withinLimit(double[] x, double[] y) {
+		int bool = 0;
+
+		for (int i = 2; i < x.length; i++) {
+			if (Math.abs(x[i] - y[i]) < 0.001)
+				bool++;
+		}
+		if (bool == 11)
+			return true;
+
+		return false;
+	}
+
+}
+```
